@@ -2,16 +2,16 @@
 
 <h3>Add a Brand:</h3>
   <form action="/brands" method="post">
-    <label for="name">Brand:</label>
-    <input type="text" name="name" id="name">
+    <label for="brand_name">Brand:</label>
+    <input type="text" name="brand_name" id="brand_name">
     <button type="submit">Add Brand</button>
   </form>
 
 <br>
 
   <form action="/stores" method="post">
-    <label for="name">Store Name:</label>
-    <input type="text" name="name" id="name">
+    <label for="store_name">Store Name:</label>
+    <input type="text" name="store_name" id="store_name">
     <label for="brands">Choose Brands:</label>
 
     <% if @brands.any?() %>
@@ -27,7 +27,5 @@
     <% end %>
 
 
-    <label for="instructions">Instructions:</label>
-    <input type="textarea" name="instructions" id="instructions">
-    <button type="submit">Create Recipe</button>
+
   </form>

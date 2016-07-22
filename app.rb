@@ -14,21 +14,16 @@ get("/stores/new") do
 end
 
 post("/brands") do
-  name = params.fetch("name")
-  Brand.create({:name => name})
+  brand_name = params.fetch("brand_name")
+  Brand.create({:name => brand_name})
   redirect back
 end
 
 post("/stores") do
-  name = params.fetch("name")
+  store_name = params.fetch("store_name")
   brand_ids = params.fetch("brand_ids")
-  @brands = []
-  brand_ids_integers = []
-  brand_ids.each() do |brand_id|
-    brand = Brand.find(brand_id.to_i())
-    @brands.push(brand)
-    brand_ids_integers.push(brand_id.to_i())
-  end
+  @store = Store.create({:name => name, :brand_ids => brand_ids})
+  redirect("/stores".concat(@store.id().to_s()))
 end
 
 get("/stores/:id") do
