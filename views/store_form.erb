@@ -1,0 +1,32 @@
+<h1>Add a New Store</h1>
+
+<h3>Add a Brand:</h3>
+  <form action="/brands" method="post">
+    <label for="name">Brand:</label>
+    <input type="text" name="name" id="name">
+    <button type="submit">Add Brand</button>
+  </form>
+
+<br>
+
+  <form action="/stores" method="post">
+    <label for="name">Recipe Store:</label>
+    <input type="text" name="name" id="name">
+    <label for="brands">Choose Brands:</label>
+
+    <% if @brands.any?() %>
+      <% @brands.each() do |brand| %>
+      <div class="checkbox">
+        <label>
+        <input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
+        </label>
+      </div>
+    <%else%>
+      <p>Please add an brand.</p>
+    <% end %>
+
+
+    <label for="instructions">Instructions:</label>
+    <input type="textarea" name="instructions" id="instructions">
+    <button type="submit">Create Recipe</button>
+  </form>
