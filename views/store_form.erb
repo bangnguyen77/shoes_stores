@@ -10,7 +10,7 @@
 <br>
 
   <form action="/stores" method="post">
-    <label for="name">Recipe Store:</label>
+    <label for="name">Store Name:</label>
     <input type="text" name="name" id="name">
     <label for="brands">Choose Brands:</label>
 
@@ -21,6 +21,7 @@
         <input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
         </label>
       </div>
+      <% end %>
     <%else%>
       <p>Please add an brand.</p>
     <% end %>
