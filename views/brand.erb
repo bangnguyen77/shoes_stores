@@ -1,0 +1,47 @@
+<div class="brand">
+  <div class="col-md-6">
+    <div class="box">
+      <h1 class="big">I <3 <%= @brand.name %> <h1>
+        <h2>Stores I've seen them at:</h2>
+        <% if @brand.stores.any? %>
+        <% @brand.stores.uniq.each do |store| %>
+        <%= store.name %></br>
+        <% end %>
+        <% else %>
+        NONE ):
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="box">
+
+        <h3>Add an existing store:</h3>
+        <form action="/brand/<%= @brand.id %>" method="post">
+          <input type="hidden" name="_method" value="patch">
+          <% @stores.each do |store| %>
+          <input type="checkbox" name="store_ids[]" value="<%= store.id %>"><%= store.name %><br>
+          <% end %>
+          <h3>Add a new store01:</h3>
+          <input type="text" name="new_store_name">
+          <br><br>
+          <button type="submit" class="btn btn-xs btn-success">Add Store</button>
+        </form>
+        <hr>
+        <h3>Delete a store:</h3>
+        <form action="/brand/<%= @brand.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <% @brand.stores.uniq.each do |store| %>
+          <input type="checkbox" name="store_ids[]" value="<%= store.id %>"><%= store.name %><br>
+          <% end %>
+          <br>
+          <button type="submit" class="btn btn-xs btn-danger">Delete Store</button>
+          <br>
+
+        </form>
+
+
+
+      </div>
+    </div>
+  </div>
