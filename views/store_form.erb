@@ -27,8 +27,46 @@
       </div>
       <% end %>
     <%else%>
-      <p>Please add an brand.</p>
+      <p>Please add a brand.</p>
     <% end %>
-    <button type="submit">Create Store</button>
+
+    <h3>Add a Brand</h3>
+      <form id="add_brands" action="/stores/<%= @store.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input name="form_id" type="hidden" value="add_brands">
+      <% if @brands.any?() %>
+        <% @brands.each() do |brand| %>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>"><%= brand.name() %>
+            </label>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Please add a brand to the database</p>
+      <% end %>
+      <button type="submit">Add Ingredient</button>
+    </form>
+
+    <h3>Remove a Brand</h3>
+    <form id="remove_Brands" action="/stores/<%= @store.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input type="hidden" name="form_id" value="remove_brands">
+      <% if @store.brands().any?() %>
+        <% @store.brands().each() do |brand| %>
+          <div class="checkbox">
+          <label>
+          <input type="checkbox" name="brand_ids[]" value="<%= brand.id()%>"><%= brand.name()%>
+           </label>
+          </div>
+        <% end %>
+      <%else%>
+        <p>There are no brands to remove.</p>
+      <% end %>
+      <button type="submit">Remove Brands</button>
+    </form>
+
+
+<button type="submit">Create Store</button>
   </form>
 </div>

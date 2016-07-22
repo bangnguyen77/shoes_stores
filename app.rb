@@ -29,15 +29,33 @@ end
 get("/stores/:id") do
   @store = Store.find(params.fetch("id").to_i())
   @stores.Store.all()
-
+  @brands = Brand.all()
   erb(:store)
 end
 
 patch("/stores/:id") do
-  params.fetch("form_id").==("change_name")
-  @store = Store.find(params.fetch("id").to_i())
-  store_name = params.fetch("store_name")
-  @store.update({:name => store_name})
+  if params.fetch("form_id").==("change_name")
+    @store = Store.find(params.fetch("id").to_i())
+    store_name = params.fetch("store_name")
+    @store.update({:name => store_name})
+  elsif params.fetch("form_id").==("add_brands")
+    new_brand_ids = params[:brand_ids]
+    @store = Store.find(params.fetch("id").to_i())
+    brand_ids_array = []
+    @store.brands().each() do |brand|
+      brand_ids_array.push(brand.id())
+    end
+    new_brand_ids.each() do |id|
+      brand_ids_array.push(id)
+    end
+    @store.update({:brand_ids => brand_ids_array})
+  else
+    @store = Store.find(params.fetch("id").to_i())
+    remove_brand_ids = params[:brand_ids]
+    remove_brand_ids.each() do |i|
+      @store.brands.destroy(Brand.find(id))
+    end
+  end
   redirect back
 end
 
