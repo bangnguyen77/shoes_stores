@@ -1,20 +1,11 @@
 require("spec_helper")
 
 describe(Brand) do
-  it("belongs to a store")j do
-    test_store = Store.create({:name => "Portland"})
-    test_brand1 = test_store.brands.new({:name => "Nike"})
-    expect(test_store.brands()).to(eq([test_brand1]))
-  end
+  it { should have_and_belong_to_many(:stores) }
 
-  it("ensures the name is present") do
-    brand = Brand.new({:name => ''})
-    expect(brand.save()).to(eq(false))
-  end
-  it("ensures the name is less than 50 characters") do
-    brand = Brand.new({:name => "a".*(51)})
-    expect(brand.save()).to(eq(false))
-  end
+  it { should validate_presence_of(:name) }
+
+  it { should validate_length_of(:name) }
 
   it("capitalizes the brand name") do
     brand = Brand.create({:name => 'nike'})
