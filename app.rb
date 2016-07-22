@@ -28,8 +28,9 @@ end
 
 get("/stores/:id") do
   @store = Store.find(params.fetch("id").to_i())
-  @stores.Store.all()
-  @brands = Brand.all()
+  # @stores.Store.all()
+  # @brands = Brand.all()
+  @brands = Brand.all() - @store.brands()
   erb(:store)
 end
 
@@ -61,5 +62,16 @@ end
 
 get("/stores") do
   @stores = Store.all()
+  erb(:stores)
+end
+
+delete("/stores/:id") do
+  store = Store.find(params.fetch("id"))
+  store.destroy()
+  redirect ("/stores")
+end
+
+get("/stores") do
+  @stores = Store.order()
   erb(:stores)
 end
