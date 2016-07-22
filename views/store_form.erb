@@ -1,17 +1,21 @@
 <h1>Add a New Store</h1>
-
-<h3>Add a Brand:</h3>
+<div class="col-md-6">
+  <h3>Add a Brand:</h3>
   <form action="/brands" method="post">
     <label for="brand_name">Brand:</label>
     <input type="text" name="brand_name" id="brand_name">
     <button type="submit">Add Brand</button>
   </form>
+</div>
 
-<br>
-
+<div class="col-md-6">
+  <h1>Add Store Here:</h1>
   <form action="/stores" method="post">
     <label for="store_name">Store Name:</label>
     <input type="text" name="store_name" id="store_name">
+
+    <br><br>
+
     <label for="brands">Choose Brands:</label>
 
     <% if @brands.any?() %>
@@ -25,7 +29,6 @@
     <%else%>
       <p>Please add an brand.</p>
     <% end %>
-
-
-
+    <button type="submit">Create Store</button>
   </form>
+</div>
