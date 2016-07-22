@@ -1,14 +1,29 @@
-<h1><%= @store.name() %></h1>
+<div class="col-md-6">
+  <h1><%= @store.name() %></h1>
+  <% if @store.brands.any? %>
+    <h3>Brands:</h3>
+    <ul>
+      <% @store.brands.each() do |store_brand| %>
+        <li><%= store_brand.name() %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>
+      There are currently no brands in this store.
+    </p>
+  <% end %>
+</div>
 
-<% if @store.brands.any? %>
-  <h3>Brands:</h3>
-  <ul>
-    <% @store.brands.each() do |store_brand| %>
-      <li><%= store_brand.name() %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>
-    There are currently no brands in this store.
-  </p>
-<% end %>
+<div class="col-md-6">
+  <form action="/stores/<%= @store.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="form_id" value="change_name">
+
+    <div class="form-group">
+      <label for="store_name">Rename Your Store</label>
+      <input type="text" name="store_name" id="store_name" value="<%= @store.name() %>">
+    </div>
+
+    <button type="submit">Update</button>
+  </form>
+</div>
