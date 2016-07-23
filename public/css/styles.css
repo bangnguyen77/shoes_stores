@@ -1,0 +1,60 @@
+body{
+  font-family: 'Arimo', sans-serif;
+}
+
+h1, h2, h3 {font-family: 'Oswald', sans-serif;}
+
+.container-fluid{margin: 0; padding: 0;}
+
+.navbar {
+  padding-left: 10px;
+  background-color: #000;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.navbar a {color: #fff;}
+.navbar a:hover {color: #fff;}
+
+.box {
+  margin: 150px auto;
+  width: 65%;
+  background: #fff;
+  padding: 15px;
+  min-height: 400px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.landing_link {
+  font-size: 8em;
+  color: #fff;
+}
+
+.landing_link:hover {color: #fff;}
+
+.brand{
+  background-image: url("http://www.fubiz.net/wp-content/uploads/2013/11/Run-Colors-Sneaker-Store-12.jpg");
+  height: 100vh;
+  width: inherit;
+  background-size: 100% 100%;
+}
+
+.store{
+  background-image: url('http://www.fubiz.net/wp-content/uploads/2013/11/Run-Colors-Sneaker-Store-12.jpg');
+  height: 100vh;
+  width: inherit;
+  background-size: 100% 100%;
+}
+
+.brand_box {
+  background-image: url("http://www.fubiz.net/wp-content/uploads/2013/11/Run-Colors-Sneaker-Store-12.jpg");
+  background-size: 700px auto;
+}
+
+.store_box {
+  background-image: url('http://www.fubiz.net/wp-content/uploads/2013/11/Run-Colors-Sneaker-Store-12.jpg');
+  background-size: 700px auto;
+}
+
+.col-md-6 {text-align: center; }

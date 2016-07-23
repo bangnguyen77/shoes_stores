@@ -4,45 +4,50 @@
       <form action="/brands" method="post">
         <h3>Add a brand:</h3>
         <input type="text" name="brand_name">
-        <button type="submit" class="btn btn-md btn-primary">Add</button>
+        <button type="submit" class="btn btn-xs btn-info">Add</button>
       </form>
+      <hr>
 
       <form action="/brands" method="post">
-        <h3>Edit a brand name:</h3>
+        <h3>Edit a brand name:</h3></br>
         <input type="hidden" name="_method" value="patch">
         Old brand name:
         <select name="brand_id">
-          <% @brands.each() do |brand| %>
-          <option value="<%= @brand_id %>"><%= brand.name %></option>
+          <% @brands.each do |brand| %>
+          <option value="<%= brand.id %>"> <%= brand.name %> </option>
           <% end %>
-        </select>
-        <br>
-        New brand name:
-        <input type="text" name="new_name">
-        <button type="submit" class="btn btn-md btn-success">Update</button>
+        </select></br>
+        New brand name: <input type="text" name="new_name">
+        <button type="submit" class="btn btn-xs btn-success">Update</button>
       </form>
 
+      <hr>
       <form action="/brands" method="post">
         <h3>Delete a brand:</h3>
         <input type="hidden" name="_method" value="delete">
         Select a brand to delete:
         <select name="brand_id">
-          <% @brands.each() do |brand| %>
-            <option value="<%= brand.id() %>"> <%= brand.name() %> </option>
+          <% @brands.each do |brand| %>
+          <option value="<%= brand.id %>"> <%= brand.name %> </option>
           <% end %>
-        </select>
+        </select></br>
+        <button type="submit" class="btn btn-xs btn-danger">Delete</button>
 
-        <button type="submit" class="btn btn-md btn-danger">Delete</button>
       </form>
+    </div> <!-- div class box -->
+  </div> <!-- div class col-md-6 -->
 
-    </div>
-  </div>
-
-  <div class="clol-md-6">
+  <div class="col-md-6">
     <div class="box">
-      <h3>Your Brands</h3>
-    </div>
-
-  </div>
+      <h2>Your Brands</h2>
+      <% if @brands.any? %>
+      <% @brands.each do |brand| %>
+      <%= brand.name %></br>
+      <% end %>
+      <% else %>
+      You haven't added any brands yet!
+      <% end %>
+    </div> <!-- div class box -->
+  </div><!-- div class col-md-6 -->
 
 </div>
