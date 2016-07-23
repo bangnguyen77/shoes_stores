@@ -1,0 +1,35 @@
+#Shoe Stores
+
+This app will let users add, update, delete a shoes store or a shoes brand.
+
+##Author
+
+Bang Nguyen
+
+##Install
+
+In your yml file will be :
+
+```ruby
+development:
+adapter: postgresql
+database: shoes_stores
+
+test:
+adapter: postgresql
+database: shoes_stores_test
+```
+
+Then
+
+
+Run ```rake db:create```
+
+then:  ```rake db:test:prepare```
+
+This will create the main and test databases.
+
+
+Run ```rake db:create_migration NAME=create_stores```
+
+Check the repository files for more information on what to insert in those files, lib folder, spec set up, Rakefile, Gemfile,and views.
